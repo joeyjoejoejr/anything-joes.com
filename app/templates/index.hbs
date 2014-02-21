@@ -1,0 +1,13 @@
+{{#each}}
+<ul>
+  <li>{{id}}</li>
+  <li>{{update}}</li>
+  <li>{{mood}}</li>
+  <li>{{altitude}}</li>
+  <li>{{joecation.latitude}}</li>
+  <li>{{joecation.longitude}}</li>
+  <li>{{isNear}}</li>
+  <li><image {{bind-attr src=moodUrl}}></li>
+  <li><image {{bind-attr src=photo._url}}></li>
+</ul>
+{{/each}}
