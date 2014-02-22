@@ -1,6 +1,10 @@
+`import Comment from "appkit/models/comment"`
+
 Joetrack = Ember.ObjectProxy.extend
   init: ->
     @set "id", @get("content").id
+    @set "createdAt", @get("content").createdAt
+    @set "updatedAt", @get("content").updatedAt
     @set "parseObject", @get "content"
     @set "content", @get("content").attributes
 
@@ -9,6 +13,20 @@ Joetrack = Ember.ObjectProxy.extend
   moodUrl: (->
     "/assets/mood#{@get("mood")}.png"
   ).property("mood")
+
+  comments: []
+  fetchComments: ->
+      comment = Parse.Object.extend "Comment"
+      query = new Parse.Query comment
+      query.equalTo "subject", @get("parseObject")
+      query.descending("createdAt")
+      query.find().then (results) =>
+        @set "comments", results.map (comment) ->
+          Comment.create content: comment
+
+  addComment: (comment) ->
+    newComment = Comment.create content: comment
+    @get("comments").unshiftObject newComment
 
   updateLocation: (->
     $.getJSON "http://maps.google.com/maps/api/geocode/json",
@@ -33,6 +51,5 @@ Joetrack.reopenClass
     query.find().then (results) ->
       results.map (joetrack) ->
         Joetrack.create content: joetrack
-
 
 `export default Joetrack`

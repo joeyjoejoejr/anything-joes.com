@@ -1,13 +1,44 @@
-{{#each}}
-<ul>
-  <li>{{id}}</li>
-  <li>{{update}}</li>
-  <li>{{mood}}</li>
-  <li>{{altitude}}</li>
-  <li>{{joecation.latitude}}</li>
-  <li>{{joecation.longitude}}</li>
-  <li>{{isNear}}</li>
-  <li><image {{bind-attr src=moodUrl}}></li>
-  <li><image {{bind-attr src=photo._url}}></li>
-</ul>
+{{#each itemController="track"}}
+  <section class="panel panel-default update-panel">
+    <div class="panel-heading">
+      <image class="img-responsive mood-img" {{bind-attr src=moodUrl}}>
+      <span class="label label-default">
+        {{humanize-date createdAt}}
+      </span>
+      <strong class="pull-right">{{isNear}}</strong>
+    </div>
+    <div class="panel-body">
+      {{#if photo}}
+        <div class="col-md-4">
+          <a {{bind-attr href=photo._url}} target="_blank">
+            <image class="photo" {{bind-attr src=photo._url}}>
+          </a>
+        </div>
+      {{/if}}
+
+      <div class="col-md-8">
+        <dl>
+          <dt>Current Altitude: </dt>
+          <dd>{{altitude}}M</dd>
+        </dl>
+        <blockquote>{{update}}</blockquote>
+      </div>
+
+      <button {{action 'toggleComments'}} class="btn btn-default comment-btn">
+        <span class="glyphicon glyphicon-comment"></span> 1
+      </button>
+    </div>
+    {{#if commentsShown}}
+      <div class="panel-footer">
+        {{#if addingComment}}
+          {{partial "comments/_form"}}
+        {{else}}
+          <button {{action 'addComment'}} class="btn btn-success btn-sm add-comment">
+            <span class="glyphicon glyphicon-plus-sign"></span> Comment
+          </button>
+        {{/if}}
+        {{render "comments" model.comments}}
+      </div>
+    {{/if}}
+  </section>
 {{/each}}

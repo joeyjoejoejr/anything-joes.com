@@ -1,0 +1,60 @@
+img.mood-img {
+  display: inline-block;
+  height: 30px;
+  margin-right: 10px;
+  width: 30px;
+}
+
+img.photo {
+  border: 1px solid #666;
+  border-radius: 5px;
+  height: 200px;
+  width: 200px;
+  padding: 5px;
+}
+
+dt, dd {
+  margin-right: 5px;
+  display: inline-block;
+}
+
+ul.nav li {
+  cursor: pointer;
+}
+
+.container, body, html, body > div.ember-view {
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.update-panel > div {
+  position: relative;
+  height: 100%;
+}
+
+.comment-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+button.add-comment, form {
+  margin-bottom: 10px;
+}
+
+.remove-comment {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.remove-comment:hover {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #d9534f;
+}
