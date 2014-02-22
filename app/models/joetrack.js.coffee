@@ -7,6 +7,7 @@ Joetrack = Ember.ObjectProxy.extend
     @set "updatedAt", @get("content").updatedAt
     @set "parseObject", @get "content"
     @set "content", @get("content").attributes
+    @fetchComments()
 
   isNear: "Loading Location"
 

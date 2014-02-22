@@ -1,7 +1,6 @@
 TrackController = Ember.ObjectController.extend
   actions:
     toggleComments: ->
-      @get("model").fetchComments() if @get("comments").length == 0
       @toggleProperty "commentsShown"
       return
 
