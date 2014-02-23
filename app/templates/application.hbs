@@ -3,18 +3,26 @@
     <div class="navbar-header">
       <p class='navbar-brand'>Joe Tracker</p>
     </div>
+    <ul class="nav navbar-nav navbar-right">
+      <a href="http://rss.anything-joes.com" class="sm-btn btn btn-default">
+        <img src="/assets/rss.png" class="sm-image">
+      </a>
+      <a {{bind-attr href=facebookURL}} class="sm-btn btn btn-default">
+        <img src="/assets/facebook.png" class="sm-image">
+      </a>
+    </ul>
   </nav>
 
   <div class="col-md-3">
     <ul class="nav nav-pills nav-stacked">
       {{#linkTo "index" tagName="li"}}
-        <a {{bindAttr href="view.href"}}>Updates</a>
+        <a {{bind-attr href="view.href"}}>Updates</a>
       {{/linkTo}}
       {{#linkTo "component-test" tagName="li"}}
-        <a {{bindAttr href="view.href"}}>Map</a>
+        <a {{bind-attr href="view.href"}}>Map</a>
       {{/linkTo}}
       {{#linkTo "helper-test" tagName="li"}}
-        <a {{bindAttr href="view.href"}}>Altitude</a>
+        <a {{bind-attr href="view.href"}}>Altitude</a>
       {{/linkTo}}
     </ul>
   </div>
