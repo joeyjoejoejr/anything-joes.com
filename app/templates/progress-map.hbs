@@ -1,0 +1,20 @@
+{{progress-map joetracks=model showLocal=showLocal joetrack=joetrack
+action="markerClicked"}}
+<div>
+  <button class="btn btn-default" {{action "toggleView"}}>
+    {{#if showLocal}}
+      Show All Updates
+    {{else}}
+      Show Latest Update
+    {{/if}}
+  </button>
+  {{#if joetrack}}
+  <div class="map-panel pull-right panel panel-default">
+    <div class="panel-body">
+      <img {{bind-attr src=joetrack.moodUrl}}>
+      <strong>{{humanize-date joetrack.createdAt}}</strong>
+      <span>{{truncate-text joetrack.update 20}}<span>
+    </div>
+  </div>
+  {{/if}}
+</div>

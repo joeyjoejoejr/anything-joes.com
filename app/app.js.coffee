@@ -1,6 +1,6 @@
 `import Resolver from 'resolver';`
 `import parse_init from 'appkit/utils/parse_initializer';`
-parse_init()
+`import google_maps_init from 'appkit/utils/google_maps_initializer';`
 
 App = Ember.Application.extend
   LOG_ACTIVE_GENERATION: true,
@@ -10,5 +10,8 @@ App = Ember.Application.extend
   LOG_VIEW_LOOKUPS: true,
   modulePrefix: 'appkit', # TODO: loaded via config
   Resolver: Resolver['default']
+
+App.initializer(parse_init)
+App.initializer(google_maps_init)
 
 `export default App;`

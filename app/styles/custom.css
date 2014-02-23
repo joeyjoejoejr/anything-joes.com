@@ -68,3 +68,13 @@ button.add-comment, form {
   cursor: pointer;
   color: #d9534f;
 }
+
+.map-panel {
+  margin-bottom: 0;
+}
+
+.map-panel > div > img {
+  height: 20px;
+  width: 20px;
+}
+
