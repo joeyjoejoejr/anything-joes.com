@@ -9,7 +9,7 @@ action="markerClicked"}}
     {{/if}}
   </button>
   {{#if joetrack}}
-  <div class="map-panel pull-right panel panel-default">
+  <div {{action "markerClicked" joetrack}} class="map-panel pull-right panel panel-default">
     <div class="panel-body">
       <img {{bind-attr src=joetrack.moodUrl}}>
       <strong>{{humanize-date joetrack.createdAt}}</strong>

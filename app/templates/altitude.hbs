@@ -1,0 +1,27 @@
+{{altitude-graph joetracks=filteredJoetracks joetrack=joetrack action="panelClicked"}}
+
+<div class='row'>
+  <div class='col-lg-3'>
+    <div class="input-group input-group-sm">
+      {{input type="number" value=start class="form-control" placeholder="from"}}
+      <span class="input-group-addon">Days Ago</span>
+    </div>
+  </div>
+
+  <div class='col-lg-3'>
+    <div class="input-group input-group-sm">
+      {{input type="number" value=end class="form-control" placeholder="to"}}
+      <span class="input-group-addon">Days Ago</span>
+    </div>
+  </div>
+  <div class=col-lg-4'>
+    {{#if joetrack}}
+    <div {{action "panelClicked" joetrack}} class="altitude-panel pull-right panel panel-default">
+      <div class="panel-body">
+        <strong>{{humanize-date joetrack.createdAt}}</strong>
+        <span>Altitude: {{joetrack.altitudeStandard}}<span>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</div>

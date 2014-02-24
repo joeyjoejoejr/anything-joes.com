@@ -10,6 +10,9 @@ Joetrack = Ember.ObjectProxy.extend
     @fetchComments()
 
   isNear: "Loading Location"
+  altitudeStandard: (->
+    "#{Math.round(@get('altitude') * 3.28084)} ft"
+  ).property("altitude")
 
   moodUrl: (->
     "/assets/mood#{@get("mood")}.png"
