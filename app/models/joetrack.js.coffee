@@ -38,8 +38,7 @@ Joetrack = Ember.ObjectProxy.extend
               @get("joecation.longitude").toString()
       sensor: false
     .done (data) =>
-      address = data.results.find (value) ->
-        value.types.contains("administrative_area_level_2")
+      address = data.results[1]
       if address
         @set "isNear", address.formatted_address
       else
