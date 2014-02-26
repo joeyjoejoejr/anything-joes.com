@@ -18,6 +18,15 @@ AltitudeGraph = Ember.Component.extend
     if e.target.nodeName == "circle"
       @sendAction 'action', @get("joetrack")
 
+  standardObserver: (->
+    @get("chart").yLabelFormat = (height) =>
+      if @get "isStandard"
+        "#{Math.round(height * 3.28084)} ft"
+      else
+        "#{Math.round(height)} M"
+    @get("chart").setData @get("data")
+  ).observes "isStandard"
+
   didInsertElement: ->
     @set "chart", new Morris.Line
       element: @.$().get(0)
@@ -27,8 +36,11 @@ AltitudeGraph = Ember.Component.extend
       labels: ['Altitude']
       xLabelFormat: (date) ->
         moment(date).fromNow()
-      yLabelFormat: (height) ->
-        "#{Math.round(height * 3.28084)} ft"
+      yLabelFormat: (height) =>
+        if @get "isStandard"
+          "#{Math.round(height * 3.28084)} ft"
+        else
+          "#{Math.round(height)} M"
       hoverCallback: (index, options, content) =>
         @set "joetrack", @get("joetracks")[index]
 

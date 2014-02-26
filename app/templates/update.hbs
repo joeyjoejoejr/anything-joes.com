@@ -1,1 +1,64 @@
-<h2>Work in progress</h2>
+<ul class="nav nav-tabs">
+  <li {{action "mapClicked"}} {{bind-attr class="isMap:active"}}>
+    <a>Map</a>
+  </li>
+  <li {{action "altitudeClicked"}} {{bind-attr class="isMap::active"}}>
+    <a href="#">Altitude</a>
+  </li>
+</ul>
+
+<div class="update-visual-panel">
+  {{#if isMap}}
+    {{progress-map joetracks=joetracks}}
+  {{else}}
+    {{altitude-graph joetracks=joetracks isStandard=isStandard}}
+  {{/if}}
+</div>
+
+<section class="panel panel-default update-panel">
+  <div class="panel-heading">
+    <image class="img-responsive mood-img" {{bind-attr src=moodUrl}}>
+    <span class="label label-default">
+      {{humanize-date createdAt}}
+    </span>
+    <strong class="pull-right">Near {{isNear}}</strong>
+  </div>
+  <div class="panel-body">
+    {{#if photo}}
+      <div class="col-md-4">
+        <a {{bind-attr href=photo._url}} target="_blank">
+          <image class="photo" {{bind-attr src=photo._url}}>
+        </a>
+      </div>
+    {{/if}}
+
+    <div class="col-md-8">
+      <dl>
+        <dt>Current Altitude: </dt>
+        <dd>{{metric-convert altitude isStandard}}</dd>
+        <dt>Accuracy: </dt>
+        <dd>{{metric-convert altitude_accuracy isStandard}}</dd>
+      </dl>
+
+      <dl>
+        <dt>Lattitude: </dt>
+        <dd>{{joecation.latitude}}</dd>
+        <dt>Longitude: </dt>
+        <dd>{{joecation.longitude}}</dd>
+        <dt>Accuracy: </dt>
+        <dd>{{metric-convert joecation_accuracy isStandard}}</dd>
+      </dl>
+      <blockquote>{{update}}</blockquote>
+    </div>
+  </div>
+  <div class="panel-footer">
+    {{#if addingComment}}
+      {{partial "comments/_form"}}
+    {{else}}
+      <button {{action 'addComment'}} class="btn btn-success btn-sm add-comment">
+        <span class="glyphicon glyphicon-plus-sign"></span> Comment
+      </button>
+    {{/if}}
+    {{render "comments" model.comments}}
+  </div>
+</section>

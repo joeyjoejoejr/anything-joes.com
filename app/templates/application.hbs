@@ -10,6 +10,9 @@
       <a {{bind-attr href=facebookURL}} class="sm-btn btn btn-default">
         <img src="/assets/facebook.png" class="sm-image">
       </a>
+      <a class="btn btn-default standard-button" {{action "toggleStandard"}}>
+        <span class="glyphicon glyphicon-cog"></span> {{standardText}}
+      </a>
     </ul>
   </nav>
 

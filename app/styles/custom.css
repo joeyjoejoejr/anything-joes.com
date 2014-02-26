@@ -48,6 +48,14 @@ ul.nav li {
   height: 100%;
 }
 
+.update-panel > .panel-heading {
+  cursor: pointer;
+}
+
+.update-panel > .panel-heading:hover {
+  background-color: #ebebeb;
+}
+
 .comment-btn {
   position: absolute;
   bottom: 5px;
@@ -82,3 +90,11 @@ button.add-comment, form {
   height: 20px;
   width: 20px;
 }
+
+.update-visual-panel {
+  height: 300px;
+}
+
+.standard-button {
+  margin-top: 10px;
+  width: 190px;

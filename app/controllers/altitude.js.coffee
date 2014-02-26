@@ -1,4 +1,6 @@
 AltitudeController = Ember.ArrayController.extend
+  needs: "application"
+  isStandard: Ember.computed.alias "controllers.application.isStandard"
   filteredJoetracks: (->
     tracks = @get("model").filter (joetrack) =>
       if @get('start') or @get('end')

@@ -1,6 +1,6 @@
-{{#each itemController="track"}}
+{{#each itemController="update"}}
   <section class="panel panel-default update-panel">
-    <div class="panel-heading">
+    <div {{action "clickItem" this}} class="panel-heading">
       <image class="img-responsive mood-img" {{bind-attr src=moodUrl}}>
       <span class="label label-default">
         {{humanize-date createdAt}}
@@ -19,7 +19,7 @@
       <div class="col-md-8">
         <dl>
           <dt>Current Altitude: </dt>
-          <dd>{{altitude}}M</dd>
+          <dd>{{metric-convert altitude isStandard}}</dd>
         </dl>
         <blockquote>{{update}}</blockquote>
       </div>

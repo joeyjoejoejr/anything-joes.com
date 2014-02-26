@@ -1,5 +1,12 @@
-TrackController = Ember.ObjectController.extend
+UpdateController = Ember.ObjectController.extend
+  needs: "application"
+  isStandard: Ember.computed.alias "controllers.application.isStandard"
+  joetracks: Ember.computed.alias("controllers.application.model")
+  isMap: true
+
   actions:
+    mapClicked: -> @set "isMap", true
+    altitudeClicked: -> @set "isMap", false
     toggleComments: ->
       @toggleProperty "commentsShown"
       return
@@ -23,4 +30,4 @@ TrackController = Ember.ObjectController.extend
           @set 'addingComment', false
           @get('model').addComment comment
 
-`export default TrackController`
+`export default UpdateController`
