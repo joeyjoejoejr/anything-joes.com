@@ -14,10 +14,15 @@ ApplicationController = Ember.Controller.extend
       "Switch to Standard"
   ).property "isStandard"
 
+  isStandard: (->
+    if localStorage.isStandard == "true"
+      localStorage.isStandard
+  )()
+
   actions:
     toggleStandard: ->
       @toggleProperty "isStandard"
-      window.isStandard = @get "isStandard"
+      localStorage.isStandard = @get "isStandard"
       return
 
 `export default ApplicationController`
