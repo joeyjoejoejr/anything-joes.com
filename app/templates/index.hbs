@@ -42,3 +42,7 @@
     {{/if}}
   </section>
 {{/each}}
+
+{{#unless isFullyLoaded}}
+  <button {{action "loadMore"}} class="btn btn-small">Load {{nextLoad}} More Updates</button>
+{{/unless}}

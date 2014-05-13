@@ -10,7 +10,7 @@
     "morris.js": "https://github.com/morrisjs/morris.js.git",
     "ember-testing-httpRespond": "~0.1.1",
     "ic-ajax": "~0.3.0",
-    "parse": "../parse",
+    "parse": "albemuth/parse-js-sdk",
     "momentjs": "~2.5.1"
   },
   "resolutions": {

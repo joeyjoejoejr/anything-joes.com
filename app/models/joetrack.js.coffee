@@ -3,7 +3,7 @@
 Joetrack = Ember.ObjectProxy.extend
   init: ->
     @set "id", @get("content").id
-    @set "createdAt", @get("content").createdAt
+    @set "createdAt", @get("content").attributes.saved_at
     @set "updatedAt", @get("content").updatedAt
     @set "parseObject", @get "content"
     @set "content", @get("content").attributes
@@ -48,9 +48,19 @@ Joetrack = Ember.ObjectProxy.extend
   ).observes("content.joecation").on 'init'
 
 Joetrack.reopenClass
-  find: ->
+  count: ->
     joetrack = Parse.Object.extend "Joetrack"
     query = new Parse.Query(joetrack)
+    query.count().then (count) -> count
+
+  find: (skip = 0, limit = 10) ->
+    limit = null if limit == 'none'
+
+    joetrack = Parse.Object.extend "Joetrack"
+    query = new Parse.Query(joetrack)
+    query.descending("savedAt")
+    query.limit(limit)
+    query.skip(skip * 10)
     query.find().then (results) ->
       results.map (joetrack) ->
         Joetrack.create content: joetrack

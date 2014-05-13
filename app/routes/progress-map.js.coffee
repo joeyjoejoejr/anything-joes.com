@@ -1,6 +1,8 @@
+`import Joetrack from 'appkit/models/joetrack'`
+
 ProgressMapRoute = Ember.Route.extend
   model: ->
-    @modelFor 'application'
+    Joetrack.find(0, 'none')
 
   actions:
     toggleView: ->
